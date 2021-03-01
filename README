@@ -1,0 +1,84 @@
+Student: Boldișor Dragoș-Alexandru
+Grupă și serie: 312CB
+
+            Tema 1 - Structuri de Date
+
+I. Fișier "tema1.c"
+
+    - funcția "test" - face diferența dintre cele două comenzi: DELETE <TABLE>
+și DELETE <TABLE> <COLUMN> <relație> <valoare>.
+    - funcția "task" - verifică buffer-ul în care se află comanda primită de la
+tastatură și apelează funcția corespunzătoare (a cărei definiție se află în
+fișierul "aux.c").
+    - funcția "main" - în care, prin intermediul unui loop infinit (oprit cu
+ajutorul funcției deleteDB) primește constant comenzi de la tastatură care sunt
+reținute în vectorul "buffer". Aici este apelată funcția task.
+
+II. Fișier "aux.c"
+
+    - funcțiile "clear<TYPE>Lines" folosite pentru a șterge liniile din tabelul
+primit ca parametru în funcție de tipul acestuia.
+    - funcția "initDB" - inițializează baza de date cu numele primit ca
+parametru și întoarce adresa acesteia.
+    - funcția "deleteTable" - folosită pentru a localiza tabelul în baza de
+date și pentru a-l scoate din lista de tabele, urmând ca funcțiile de ștergere
+de linii specifice pentru fiecare tip să fie apelate în funcție de caz și
+coloanele să fie eliberate separat.
+    - funcția "deleteDB" - șterge baza de date primită ca parametru. Folosește
+funcțiile de eliberare pentru fiecare tip asemănător funcției "deleteTable".
+    - funcția "findTable" - caută în baza de date după numele dat ca parametru.
+Întoarce NULL dacă nu a fost găsit sau adresa tabelului în celălalt caz.
+    - funcția "findColumn" - care caută în tabelul primit ca parametru coloana
+a cărei nume este tot parametru. Întoarce poziția în listă sau 0 dacă nu a fost
+găsit.
+    - funcția "findRelation" - primește ca parametru relația sub formă de
+string și întoarce un număr ce reprezintă codificarea acestuia.
+    - funcția "Digits" - funcție ce întoarce numărul de cifre ale unui întreg
+primit ca parametru.
+    - funcția "createNewTable" - verifică dacă există tabelul deja în baza de
+date. Dacă nu, inițializează noul tabel, precum și coloanele acestuia, și îl
+leagă în lista de tabele.
+    - funcțiile "print<TYPE>Line" - afișează linii din tabelă pentru fiecare
+tip. Folosesc funcția Digits pentru tipul INT și FLOAT pentru a calcula câte
+spații sunt necesare pentru afișarea corectă.
+    - funcțiile "print<TYPE>Table" - afișează toate liniile dintr-un tabel
+folosind funcțiile "print<TYPE>Line".
+    - funcția "printTable" - caută tabelul, formează delimitatorul dintre
+coloană și linii, afișează numele tabelului, coloanele și apelează funcțiile
+specifice. Întregul "with" poate avea valoarea 0 (situație în care se afișează
+și liniile) sau 1 (situație de în care se afișează doar coloanele).
+    - funcția "printDB" - afișează folosind printTable. 
+    - funcțiile "aloc<TYPE>Cell" - alocă o celulă din tipul specificat și îi
+inițializează valoarea cu valoarea primită ca parametru.
+    - funcțiile "add<TYPE>Line" - alocă un element linie din tipul specificat,
+îl adaugă în lista de linii din tabel și alocă celule folosind funcțiile
+"aloc<TYPE>Cell".
+    - funcția "addLine" - adaugă linie nouă în tabel folosind funcțiile
+"add<TYPE>Line".
+    - funcția "clearLines" - șterge liniile dintr-un tabel folosind funcțiile
+"clear<TYPE>Lines".
+    - funcțiile "delete<TYPE>Line" - șterge o anumită linie (funcția are ca
+parametru linia anterioară, precum și tabelul). Face și legăturile necesare în
+lista de linii din tabel.
+    - funcțiile "PoR_<TYPE>Line" - șterg sau afișează liniile ce îndeplinesc o
+anumită condiție dată: au ca parametrii task care are valoarea 1 pentru
+afișare și 2 pentru ștergere, t - tabelul, poz - poziția pe care se află celula
+ce va fi testată, rel - codificarea pentru relație, val - un string ce reține
+valoarea de referință.
+    - funcția "Print_or_Delete_Lines" - asemănător funcțiilor de mai sus,
+primește ca argument task, baza de date și buffer-ul. Caută tabelul, coloana și
+relația, apoi apelează funcția specifică.
+
+III. Fișier "aux.h"
+
+    - aici se află antetul funcțiilor create în "aux.c" precum și definițiile
+structurilor utilizate.
+
+            IMPORTANT!!!
+    Am folosit Visual Studio Code unde tab-ul ocupă 4 spații. În alte editoare
+de text, tab-ul poate ocupa un număr mai mare de spații, fapt ce poate duce la
+linii mai mari de 80 de caractere.
+
+Punctaj obținut prin rularea checker-ului local:
+    Punctaj total 85/85
+    Punctaj valgrind 20/20
